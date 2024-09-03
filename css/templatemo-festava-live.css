@@ -409,6 +409,12 @@ strong {
   background-color: var(--primary-color);
   padding-top: 12px;
   padding-bottom: 12px;
+  overflow: hidden; /* Hide overflowing content */
+}
+.header-logo {
+  max-width: 50%; /* Adjust this percentage to fit your design */
+  height: 30px;   /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image is contained within its container */
 }
 
 
