@@ -364,7 +364,7 @@ strong {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(1, 31, 8, 0.641); /* Adjust background as needed */
+  background: rgb(1, 31, 8); /* Adjust background as needed */
 }
 
 .hero-section .container {
@@ -401,6 +401,11 @@ strong {
   object-fit: cover; /* Ensure the video covers the entire container */
   transform: translate(-50%, -50%); /* Center the video */
 }
+
+.no-enhance .m-video__button {
+  display: none;
+}
+
 
 
 
@@ -614,7 +619,7 @@ strong {
 
 
 /*---------------------------------------
-  TICKET               
+  manifestor              
 -----------------------------------------*/
 .ticket-section {
   background-image: url('../images/nicholas-green-unsplash-blur.jpg');
@@ -650,7 +655,7 @@ strong {
 
 
 /*---------------------------------------
-  ARTISTS              
+  Speakers           
 -----------------------------------------*/
 .artists-thumb {
   position: relative;
@@ -788,71 +793,20 @@ strong {
 
 
 /*---------------------------------------
-  PRICING              
------------------------------------------*/
-.pricing-thumb {
-  border: 5px dotted var(--dark-color);
-  border-radius: var(--border-radius-medium);
-  position: relative;
-  padding: 50px;
-}
-
-.pricing-thumb h3 small {
-  display: inline-block;
-  font-size: var(--p-font-size);
-  margin-right: 15px;
-}
-
-.pricing-list {
-  column-count: 2;
-  padding-left: 20px;
-}
-
-.pricing-list-item {
-  line-height: normal;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.pricing-tag {
-  background-color: var(--secondary-color);
-  border-radius: var(--border-radius-large);
-  color: var(--white-color);
-  font-weight: var(--font-weight-bold);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: 120px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 20px;
-}
-
-.pricing-tag span {
-  font-size: 180%;
-  line-height: normal;
-}
-
-.pricing-thumb .link-fx-1 {
-  color: var(--primary-color);
-}
-
-.pricing-thumb .link-fx-1:hover {
-  color: var(--link-hover-color);
-}
-
-
-/*---------------------------------------
   CONTACT               
 -----------------------------------------*/
 .google-map {
-  border-radius: var(--border-radius-medium);
+  width: 100%;
+  height: 450px; /* Set a fixed height */
+  border: 0;
 }
 
+/* Ensure responsive behavior */
+@media (max-width: 768px) {
+  .google-map {
+      height: 300px; /* Adjust height for smaller screens */
+  }
+}
 
 /*---------------------------------------
   CUSTOM FORM               
