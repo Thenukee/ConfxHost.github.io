@@ -758,6 +758,13 @@ T e m p l a t e M o
                 video.play();
             };
         };
+        // Fallback to ensure content is shown after a maximum wait time (e.g., 10 seconds)
+        setTimeout(function() {
+    if (document.getElementById("loadingScreen").style.display !== "none") {
+        document.getElementById("loadingScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    }
+}, 10000);
     </script>
     
 
