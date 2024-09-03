@@ -195,7 +195,7 @@
                             <h6 class="text-white mt-4">Our Objectives</h6>
 
                             <p class="text-white"><ul style="list-style-type: disc;">
-                                <li class="text-white">To facilitate a direct line of communication between young legal professionals and Hon. Sajith Premadasa, offering a platform to voice ideas, concerns, and proposals on legal and policy reforms.</li>
+                                </ul><li class="text-white">To facilitate a direct line of communication between young legal professionals and Hon. Sajith Premadasa, offering a platform to voice ideas, concerns, and proposals on legal and policy reforms.</li>
                                 <li class="text-white">To enable participants to influence policy development by presenting their perspectives on legal reforms that can drive the nation's progress.</li>
                                 <li class="text-white">To build connections between young legal minds and influential policymakers, opening pathways for collaboration and mentorship.</li>
                             </ul>
@@ -214,6 +214,57 @@
                 </div>
             </div>
         </section>
+
+        <style>
+            /* Scroll Animation */
+            .about-section,
+            .artists-section,
+            .schedule-section,
+            .contact-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+
+            .about-section.show,
+            .artists-section.show,
+            .schedule-section.show,
+            .contact-section.show {
+            opacity: 1;
+            transform: translateY(0);
+            }
+        </style>
+
+        <script>
+            // Scroll Animation
+            window.addEventListener('scroll', function () {
+            const aboutSection = document.querySelector('.about-section');
+            const artistsSection = document.querySelector('.artists-section');
+            const scheduleSection = document.querySelector('.schedule-section');
+            const contactSection = document.querySelector('.contact-section');
+            const aboutSectionPosition = aboutSection.getBoundingClientRect().top;
+            const artistsSectionPosition = artistsSection.getBoundingClientRect().top;
+            const scheduleSectionPosition = scheduleSection.getBoundingClientRect().top;
+            const contactSectionPosition = contactSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (aboutSectionPosition < windowHeight - 100) {
+            aboutSection.classList.add('show');
+            }
+
+            if (artistsSectionPosition < windowHeight - 100) {
+            artistsSection.classList.add('show');
+            }
+
+            if (scheduleSectionPosition < windowHeight - 100) {
+            scheduleSection.classList.add('show');
+            }
+
+            if (contactSectionPosition < windowHeight - 100) {
+            contactSection.classList.add('show');
+            }
+            });
+        </script>
 
 
         <section class="artists-section section-padding" id="section_3">
@@ -558,3 +609,4 @@ window.addEventListener('load', function () {
 </body>
 
 </html>
+
