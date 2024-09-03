@@ -413,7 +413,7 @@ strong {
 }
 .header-logo {
   max-width: 50%; /* Adjust this percentage to fit your design */
-  height: 30px;   /* Maintain aspect ratio */
+  height: 10px;   /* Maintain aspect ratio */
   object-fit: contain; /* Ensure the image is contained within its container */
 }
 
