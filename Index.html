@@ -23,9 +23,34 @@
 
     <link href="css/templatemo-festava-live.css" rel="stylesheet">
 
+    <style>
+        /* Styles for the loading screen */
+        #loadingScreen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999; /* Ensure it's above everything else */
+        }
+
+        #mainContent {
+            display: none; /* Hide main content initially */
+        }
+    </style>
+
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+        <p>Loading...</p>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent">
 
     <main>
 
@@ -702,6 +727,9 @@
         </div>
     </footer>
 
+
+    <!-- Main Content end -->
+</div>
     <!--
 
 T e m p l a t e M o
@@ -714,6 +742,21 @@ T e m p l a t e M o
     <script src="js/jquery.sticky.js"></script>
     <script src="js/click-scroll.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        window.onload = function() {
+            // Hide the loading screen
+            document.getElementById("loadingScreen").style.display = "none";
+            
+            // Show the main content
+            document.getElementById("mainContent").style.display = "block";
+            
+            // Optionally, ensure the video is ready
+            var video = document.getElementById("myVideo");
+            video.oncanplaythrough = function() {
+                video.play();
+            };
+        };
+    </script>
 
 </body>
 
