@@ -47,7 +47,7 @@
     <!-- Loading Screen -->
     <video id="myVideo" autoplay loop muted preload="auto" class="custom-video" poster="">
         <source src="video/Sjbintro2new.webm" type="video/webm">
-        <source src="video/Sjbintro2new.mp4" type="video/mp4">
+        
         Your browser does not support the video tag.
     </video>
     
@@ -756,7 +756,13 @@ T e m p l a t e M o
             // Show the main content
             document.getElementById("mainContent").style.display = "block";
             
-            
+            // Optionally, ensure the video is ready and play it automatically
+            var video = document.getElementById("myVideo");
+            if (video) {
+                video.oncanplaythrough = function() {
+                    video.play();
+                };
+            }
         });
 
         // Fallback to ensure content is shown after a maximum wait time (e.g., 10 seconds)
