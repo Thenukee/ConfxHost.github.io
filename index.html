@@ -121,8 +121,8 @@
             <div class="section-overlay"></div>
         
             <div class="video-wrap">
-                <video id="myVideo" autoplay loop muted preload="auto" class="custom-video" poster="">
-                    <source src="video/Sjbintro2new.webm" type="video/webm">
+                <video  autoplay loop muted preload="auto" class="custom-video" poster="">
+                    <source id="myVideo" src="video/Sjbintro2new.webm" type="video/webm">
                     <source src="video/Sjbintro2new.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>                
@@ -746,25 +746,28 @@ T e m p l a t e M o
     <script src="js/click-scroll.js"></script>
     <script src="js/custom.js"></script>
     <script>
-            window.addEventListener("load", function() {
-            // Hide the loading screen when all content is fully loaded
+        window.onload = function() {
+            // Ensure all content including images, videos, and other media are fully loaded
+            
+            // Hide the loading screen
             document.getElementById("loadingScreen").style.display = "none";
             
             // Show the main content
             document.getElementById("mainContent").style.display = "block";
             
-           
-        });
-
+            // Optionally, ensure the video is ready and play it automatically
+            var video = document.getElementById("myVideo");
+            video.oncanplaythrough = function() {
+                video.play();
+            };
+        };
         // Fallback to ensure content is shown after a maximum wait time (e.g., 10 seconds)
         setTimeout(function() {
-            var loadingScreen = document.getElementById("loadingScreen");
-            if (loadingScreen.style.display !== "none") {
-                loadingScreen.style.display = "none";
-                document.getElementById("mainContent").style.display = "block";
-            }
-        }, 3000); // 10 seconds timeout
-
+    if (document.getElementById("loadingScreen").style.display !== "none") {
+        document.getElementById("loadingScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    }
+}, 3000);
     </script>
     
 
