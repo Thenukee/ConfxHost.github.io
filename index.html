@@ -609,4 +609,18 @@ window.addEventListener('load', function () {
 </body>
 
 </html>
+<script>
+    // Table Animation
+    const tableRows = document.querySelectorAll('.table-background-image-wrap');
+
+    tableRows.forEach(row => {
+        row.addEventListener('mouseover', () => {
+            row.style.backgroundColor = 'blue'; // Change the background color to blue on hover
+        });
+
+        row.addEventListener('mouseout', () => {
+            row.style.backgroundColor = ''; // Reset the background color on mouseout
+        });
+    });
+</script>
 
