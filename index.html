@@ -579,3 +579,34 @@ window.addEventListener('load', function () {
 </body>
 
 </html>
+<style>
+    /* Add CSS scroll animation to all divs */
+    div {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    div.animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    // Add scroll animation to divs when they come into view
+    function animateDivs() {
+        const divs = document.querySelectorAll('div');
+        divs.forEach((div) => {
+            const rect = div.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                div.classList.add('animate');
+            }
+        });
+    }
+
+    // Call animateDivs on page load and scroll
+    window.addEventListener('load', animateDivs);
+    window.addEventListener('scroll', animateDivs);
+</script>
