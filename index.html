@@ -369,7 +369,7 @@
                 <div class="row">
 
                     <div class="col-lg-8 col-12 mx-auto">
-                        <h2 class="text-center mb-4">Interested? Let's talk</h2>
+                        <h2 class="text-center mb-4">Let's talk</h2>
 
                         <nav class="d-flex justify-content-center">
                             <div class="nav nav-tabs align-items-baseline justify-content-center" id="nav-tab"
@@ -609,4 +609,18 @@ window.addEventListener('load', function () {
 </body>
 
 </html>
+<script>
+    // Table Animation
+    const tableRows = document.querySelectorAll('.table-background-image-wrap');
+
+    tableRows.forEach(row => {
+        row.addEventListener('mouseover', () => {
+            row.style.backgroundColor = 'blue'; // Change the background color to blue on hover
+        });
+
+        row.addEventListener('mouseout', () => {
+            row.style.backgroundColor = ''; // Reset the background color on mouseout
+        });
+    });
+</script>
 
