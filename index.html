@@ -625,5 +625,19 @@ window.addEventListener('load', function () {
             row.style.transform = ''; // Reset the zoom on mouseout
         });
     });
+    // Photo Zoom Animation
+    const artistImages = document.querySelectorAll('.artists-image');
+
+    artistImages.forEach(image => {
+        image.addEventListener('mouseover', () => {
+            image.style.transition = 'transform 2s'; // Increase the transition duration for slower zoom in
+            image.style.transform = 'scale(1.1)'; // Zoom in on hover
+        });
+
+        image.addEventListener('mouseout', () => {
+            image.style.transition = 'transform 2s'; // Increase the transition duration for slower zoom out
+            image.style.transform = ''; // Reset the zoom on mouseout
+        });
+    });
 </script>
 
