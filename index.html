@@ -753,13 +753,7 @@ T e m p l a t e M o
             // Show the main content
             document.getElementById("mainContent").style.display = "block";
             
-            // Optionally, ensure the video is ready and play it automatically
-            var video = document.getElementById("myVideo");
-            if (video) {
-                video.oncanplaythrough = function() {
-                    video.play();
-                };
-            }
+           
         });
 
         // Fallback to ensure content is shown after a maximum wait time (e.g., 10 seconds)
