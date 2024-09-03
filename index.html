@@ -755,30 +755,54 @@ T e m p l a t e M o
     <script src="js/custom.js"></script>
 
     <script>
-        window.addEventListener("load", function() {
-            // Hide the loading screen when all content is fully loaded
-            document.getElementById("loadingScreen").style.display = "none";
-            
-            // Show the main content
-            document.getElementById("mainContent").style.display = "block";
+       window.addEventListener("load", function() {
+    console.log("Window loaded, executing script.");
     
-            // Optionally, ensure the video is ready and play it automatically
-            var video = document.getElementById("introVideo");
-            if (video) {
-                video.oncanplaythrough = function() {
-                    video.play();
-                };
-            }
-        });
+    // Hide the loading screen
+    var loadingScreen = document.getElementById("loadingScreen");
+    if (loadingScreen) {
+        loadingScreen.style.display = "none";
+        console.log("Loading screen hidden.");
+    } else {
+        console.log("Loading screen element not found.");
+    }
     
-        // Fallback to ensure content is shown after a maximum wait time (e.g., 10 seconds)
-        setTimeout(function() {
-            var loadingScreen = document.getElementById("loadingScreen");
-            if (loadingScreen.style.display !== "none") {
-                loadingScreen.style.display = "none";
-                document.getElementById("mainContent").style.display = "block";
-            }
-        }, 3000); // Increased to 10 seconds to ensure all components load
+    // Show the main content
+    var mainContent = document.getElementById("mainContent");
+    if (mainContent) {
+        mainContent.style.display = "block";
+        console.log("Main content displayed.");
+    } else {
+        console.log("Main content element not found.");
+    }
+    
+    // Video playback
+    var video = document.getElementById("introVideo");
+    if (video) {
+        video.oncanplaythrough = function() {
+            video.play();
+            console.log("Video is playing.");
+        };
+    } else {
+        console.log("Video element not found.");
+    }
+});
+
+// Fallback to ensure content is shown after a maximum wait time (e.g., 10 seconds)
+setTimeout(function() {
+    console.log("Fallback triggered.");
+    var loadingScreen = document.getElementById("loadingScreen");
+    if (loadingScreen && loadingScreen.style.display !== "none") {
+        loadingScreen.style.display = "none";
+        console.log("Loading screen hidden by fallback.");
+        var mainContent = document.getElementById("mainContent");
+        if (mainContent) {
+            mainContent.style.display = "block";
+            console.log("Main content displayed by fallback.");
+        }
+    }
+}, 10000); // 10 seconds timeout
+
     </script>
     
     
