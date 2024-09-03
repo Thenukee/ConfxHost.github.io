@@ -625,28 +625,40 @@ T e m p l a t e M o
     <script src="js/click-scroll.js"></script>
     <script src="js/custom.js"></script>
     <script>
-        window.onload = function() {
-            // Ensure all content including images, videos, and other media are fully loaded
-            
-            // Hide the loading screen
-            document.getElementById("loadingScreen").style.display = "none";
-            
-            // Show the main content
-            document.getElementById("mainContent").style.display = "block";
-            
-            // Optionally, ensure the video is ready and play it automatically
-            var video = document.getElementById("myVideo");
-            video.oncanplaythrough = function() {
-                video.play();
-            };
-        };
+window.addEventListener('load', function () {
+            var loadingScreen = document.getElementById('loadingScreen');
+            var mainContent = document.getElementById('mainContent');
+            var video = document.getElementById('introVideo');
+
+            // Check if the video element exists
+            if (video) {
+                video.oncanplaythrough = function () {
+                    // Hide the loading screen and show the main content
+                    loadingScreen.style.display = 'none';
+                    mainContent.style.display = 'block';
+                };
+
+                // Handle the case where video might not trigger 'oncanplaythrough'
+                video.onerror = function () {
+                    loadingScreen.style.display = 'none';
+                    mainContent.style.display = 'block';
+                };
+            } else {
+                // If no video is present, simply hide the loading screen and show the main content
+                loadingScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        });
+
         // Fallback to ensure content is shown after a maximum wait time (e.g., 10 seconds)
-        setTimeout(function() {
-    if (document.getElementById("loadingScreen").style.display !== "none") {
-        document.getElementById("loadingScreen").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-    }
-}, 10000);
+        setTimeout(function () {
+            var loadingScreen = document.getElementById('loadingScreen');
+            var mainContent = document.getElementById('mainContent');
+            if (loadingScreen.style.display !== 'none') {
+                loadingScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        }, 10000); // Increased to 10 seconds
     </script>
     
 
