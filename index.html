@@ -45,13 +45,10 @@
 
 <body>
     <!-- Loading Screen -->
-    <video id="myVideo" autoplay loop muted preload="auto" class="custom-video" poster="">
-        <source src="video/Sjbintro2new.webm" type="video/webm">
-        
-        Your browser does not support the video tag.
-    </video>
-    
-    
+    <div id="loadingScreen" class="d-flex justify-content-center align-items-center vh-100">
+        <img src="video/Gold Logo FullHD.gif" alt="Loading" class="img-fluid">
+    </div>
+
 
     <!-- Main Content -->
     <div id="mainContent">
@@ -124,11 +121,11 @@
             <div class="section-overlay"></div>
         
             <div class="video-wrap">
-                <video autoplay loop muted playsinline preload="auto" class="custom-video" poster="">
+                <video id="myVideo" autoplay loop muted preload="auto" class="custom-video" poster="">
                     <source src="video/Sjbintro2new.webm" type="video/webm">
-                    <source src="video/Sjbintro2new.mp4" type="video/mp4"> <!-- Fallback for iOS -->
+                    <source src="video/Sjbintro2new.mp4" type="video/mp4">
                     Your browser does not support the video tag.
-                </video>
+                </video>                
             </div>
             
         
