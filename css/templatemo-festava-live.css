@@ -13,9 +13,9 @@ https://templatemo.com/tm-583-festava-live
 :root {
   --white-color:                  #ffffff;
   --primary-color:                #0b9444;
-  --secondary-color:              #0f452c;
+  --secondary-color:              #ae5603;
   --section-bg-color:             #f0f8ff;
-  --custom-btn-bg-color:          #ffd504;
+  --custom-btn-bg-color:          #c16b14;
   --custom-btn-bg-hover-color:    #0f452c;
   --dark-color:                   #0f452c;
   --p-color:                      #717275;
@@ -362,7 +362,7 @@ strong {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Adjust background as needed */
+  background: rgba(1, 31, 8, 0.641); /* Adjust background as needed */
 }
 
 .hero-section .container {
@@ -607,6 +607,8 @@ strong {
   margin: 20px;
   padding: 35px;
 }
+
+
 
 
 /*---------------------------------------
