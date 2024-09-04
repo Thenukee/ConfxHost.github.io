@@ -53,8 +53,6 @@
 </head>
 
 <body>
-    <img src="images/curser.png" id="touchCursor" class="touch-cursor" alt="Cursor">
-
     <!-- Loading Screen -->
     <div id="loadingScreen">
         <img src="video/Gold Logo FullHD.gif" alt="Loading" class="img-fluid">
@@ -120,6 +118,7 @@
                 </div>
             </div>
         </nav>
+
 
         <section class="hero-section" id="section_1">
             <div class="section-overlay"></div>
@@ -189,6 +188,7 @@
                 </div>
             </div>
         </section>
+        
 
         <section class="about-section section-padding" id="section_2">
             <div class="container">
@@ -276,6 +276,7 @@
             });
         </script>
 
+
         <section class="artists-section section-padding" id="section_3">
             <div class="container">
                 <div class="row justify-content-center">
@@ -310,6 +311,7 @@
                 </div>
             </div>
         </section>
+
 
         <section class="schedule-section section-padding" id="section_4">
             <div class="container">
@@ -367,6 +369,10 @@
                 </div>
             </div>
         </section>
+
+
+        
+
 
         <section class="contact-section section-padding" id="section_6">
             <div class="container">
@@ -437,6 +443,7 @@
             </div>
         </section>
     </main>
+
 
     <footer class="site-footer">
         <div class="site-footer-top">
@@ -555,7 +562,15 @@
             </div>
         </div>
     </footer>
+
+
+    <!-- Main Content end -->
 </div>
+    <!--
+
+T e m p l a t e M o
+
+-->
 
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
@@ -599,30 +614,6 @@ window.addEventListener('load', function () {
                 mainContent.style.display = 'block';
             }
         }, 10000); // Increased to 10 seconds
-    </script>
-
-    <script>
-        const touchCursor = document.getElementById('touchCursor');
-
-        // Show the custom cursor on touch events
-        window.addEventListener('touchstart', function(event) {
-            const touch = event.touches[0];
-            touchCursor.style.left = `${touch.clientX}px`;
-            touchCursor.style.top = `${touch.clientY}px`;
-            touchCursor.style.display = 'block';
-        });
-
-        // Move the custom cursor along with touch movement
-        window.addEventListener('touchmove', function(event) {
-            const touch = event.touches[0];
-            touchCursor.style.left = `${touch.clientX}px`;
-            touchCursor.style.top = `${touch.clientY}px`;
-        });
-
-        // Hide the custom cursor when touch ends
-        window.addEventListener('touchend', function() {
-            touchCursor.style.display = 'none';
-        });
     </script>
 
 </body>
