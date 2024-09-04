@@ -61,6 +61,7 @@
     <!-- Main Content -->
     <div id="mainContent">
 
+
     <main>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg">
@@ -102,7 +103,13 @@
                         </li>
                     </ul>
 
-                    <a href="files/Mili Ayya Doc (SJB).pdf" download class="btn custom-btn d-lg-block d-none">Download Summary Manifesto</a>
+                    <!-- Visible on large screens (lg and up) -->
+                    <a href="files/Mili Ayya Doc (SJB).pdf" download class="btn custom-btn d-none d-lg-block">Download Summary Manifesto</a>
+
+                    <!-- Visible on small and medium screens (less than lg) -->
+                    <a href="files/Mili Ayya Doc (SJB).pdf" download class="btn custom-btn mobile-button d-block d-lg-none">Download Summary Manifesto</a>
+
+
 
                 </div>
             </div>

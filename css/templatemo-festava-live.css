@@ -346,6 +346,12 @@ strong {
   color: var(--white-color);
 }
 
+.custom-btn.mobile-button {
+  margin-top: 20px; /* Adjust this value as needed */
+  margin-bottom: 20px; /* Adjust this value as needed */
+}
+
+
 
 /*---------------------------------------
   HERO        
