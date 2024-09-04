@@ -46,7 +46,9 @@ https://templatemo.com/tm-583-festava-live
 
 body {
   background-color: var(--white-color);
-  font-family: var(--body-font-family); 
+  font-family: var(--body-font-family);
+  margin: 0;
+  padding: 0; 
 }
 
 
@@ -64,17 +66,6 @@ body {
 .font-sathsara {
   font-family: Sathsara;
 }
-
-@font-face {
-  font-family: 'Antonio';
-  src: url('../fonts/Antonio/Antonio-VariableFont_wght.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-.font-antonio {
-  font-family: Antonio;
-}
-
 
 .custom-header-font-size{
   font-size: 20px;
@@ -366,6 +357,7 @@ strong {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 70px; /* Adjust based on the height of the navbar */
 }
 
 .hero-section .section-overlay {
@@ -983,6 +975,13 @@ strong {
   
   .navbar {
     background-color: var(--dark-color);
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+
   }
 
   .navbar-expand-lg .navbar-nav {
