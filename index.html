@@ -44,22 +44,9 @@
     </style>
 
     <style>
-        body {
-            cursor: url('images/curser.png'), auto;
+        body{
+            cursor: url('images/curser.png'),auto;
             min-height: 100vh;
-            margin: 0;
-            overflow-x: hidden; /* Allows vertical scrolling while hiding horizontal overflow */
-            position: relative;
-        }
-
-        /* Hide the cursor for mobile touch events */
-        .touch-cursor {
-            width: 32px;
-            height: 32px;
-            position: absolute;
-            pointer-events: none;
-            display: none;
-            z-index: 1000;
         }
     </style>
 
@@ -134,7 +121,6 @@
             </div>
         </nav>
 
-
         <section class="hero-section" id="section_1">
             <div class="section-overlay"></div>
         
@@ -203,7 +189,6 @@
                 </div>
             </div>
         </section>
-        
 
         <section class="about-section section-padding" id="section_2">
             <div class="container">
@@ -260,6 +245,37 @@
             }
         </style>
 
+        <script>
+            // Scroll Animation
+            window.addEventListener('scroll', function () {
+            const aboutSection = document.querySelector('.about-section');
+            const artistsSection = document.querySelector('.artists-section');
+            const scheduleSection = document.querySelector('.schedule-section');
+            const contactSection = document.querySelector('.contact-section');
+            const aboutSectionPosition = aboutSection.getBoundingClientRect().top;
+            const artistsSectionPosition = artistsSection.getBoundingClientRect().top;
+            const scheduleSectionPosition = scheduleSection.getBoundingClientRect().top;
+            const contactSectionPosition = contactSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (aboutSectionPosition < windowHeight - 100) {
+            aboutSection.classList.add('show');
+            }
+
+            if (artistsSectionPosition < windowHeight - 100) {
+            artistsSection.classList.add('show');
+            }
+
+            if (scheduleSectionPosition < windowHeight - 100) {
+            scheduleSection.classList.add('show');
+            }
+
+            if (contactSectionPosition < windowHeight - 100) {
+            contactSection.classList.add('show');
+            }
+            });
+        </script>
+
         <section class="artists-section section-padding" id="section_3">
             <div class="container">
                 <div class="row justify-content-center">
@@ -294,7 +310,6 @@
                 </div>
             </div>
         </section>
-
 
         <section class="schedule-section section-padding" id="section_4">
             <div class="container">
@@ -540,9 +555,8 @@
             </div>
         </div>
     </footer>
-
-    <!-- Main Content end -->
 </div>
+
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -590,55 +604,24 @@ window.addEventListener('load', function () {
     <script>
         const touchCursor = document.getElementById('touchCursor');
 
-        // Show the custom cursor on touchstart
+        // Show the custom cursor on touch events
         window.addEventListener('touchstart', function(event) {
             const touch = event.touches[0];
             touchCursor.style.left = `${touch.clientX}px`;
             touchCursor.style.top = `${touch.clientY}px`;
             touchCursor.style.display = 'block';
-        }, { passive: true });
+        });
 
         // Move the custom cursor along with touch movement
         window.addEventListener('touchmove', function(event) {
             const touch = event.touches[0];
             touchCursor.style.left = `${touch.clientX}px`;
             touchCursor.style.top = `${touch.clientY}px`;
-        }, { passive: true });
+        });
 
         // Hide the custom cursor when touch ends
         window.addEventListener('touchend', function() {
             touchCursor.style.display = 'none';
-        }, { passive: true });
-    </script>
-
-    <script>
-        // Scroll Animation
-        window.addEventListener('scroll', function () {
-        const aboutSection = document.querySelector('.about-section');
-        const artistsSection = document.querySelector('.artists-section');
-        const scheduleSection = document.querySelector('.schedule-section');
-        const contactSection = document.querySelector('.contact-section');
-        const aboutSectionPosition = aboutSection.getBoundingClientRect().top;
-        const artistsSectionPosition = artistsSection.getBoundingClientRect().top;
-        const scheduleSectionPosition = scheduleSection.getBoundingClientRect().top;
-        const contactSectionPosition = contactSection.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (aboutSectionPosition < windowHeight - 100) {
-        aboutSection.classList.add('show');
-        }
-
-        if (artistsSectionPosition < windowHeight - 100) {
-        artistsSection.classList.add('show');
-        }
-
-        if (scheduleSectionPosition < windowHeight - 100) {
-        scheduleSection.classList.add('show');
-        }
-
-        if (contactSectionPosition < windowHeight - 100) {
-        contactSection.classList.add('show');
-        }
         });
     </script>
 
