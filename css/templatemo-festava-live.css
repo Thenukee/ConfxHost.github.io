@@ -65,6 +65,17 @@ body {
   font-family: Sathsara;
 }
 
+@font-face {
+  font-family: 'Antonio';
+  src: url('../fonts/Antonio/Antonio-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.font-antonio {
+  font-family: Antonio;
+}
+
+
 .custom-header-font-size{
   font-size: 20px;
   
