@@ -8,7 +8,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Festava Live - Ticket HTML Form</title>
+    <link rel="icon" href="images/curser.png" type="image/png">
+
+    <title>SJB The Youth Forum</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,43 +24,141 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet">
 
     <link href="css/templatemo-festava-live.css" rel="stylesheet">
-    <!--
 
-TemplateMo 583 Festava Live
+    <link href="css/curser.css" rel="stylesheet">
 
-https://templatemo.com/tm-583-festava-live
+    
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+    <!-- Firebase Database -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
 
--->
+    <script type="module" src="js/popupLoader.js"></script>
+
+    <style>
+        #feedbackChart {
+            width: 100%;
+            height: 400px;  /* Adjust based on your preference */
+        }
+        /* Styles for the loading screen */
+        #loadingScreen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999; /* Ensure it's above everything else */
+        }
+        #mainContent {
+            display: none; /* Hide main content initially */
+        }
+        body {
+            cursor: url('images/curser.png'), auto;
+            min-height: 100vh;
+            overflow: auto; /* Ensure body allows scrolling */
+        }
+        /* Scroll Animation */
+        .about-section,
+        .artists-section,
+        .schedule-section,
+        .contact-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .about-section.show,
+        .artists-section.show,
+        .schedule-section.show,
+        .contact-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 
 </head>
 
 <body>
+       <!-- Modal (Popup) -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <!-- Form Fields Inside the Modal -->
+                <form class="custom-form ticket-form mb-5 mb-lg-0" method="post" role="form" id="feedbackForm">
+                    <h2 class="text-center mb-4">Tell us how you feel</h2>
 
-    <main>
+                    <!-- Name and Email Fields -->
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <input type="text" name="ticket-form-name" id="ticket-form-name" class="form-control" placeholder="Full name" required>
+                        </div>
 
-        <header class="site-header">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-12 col-12 d-flex flex-wrap">
-                        <p class="d-flex me-4 mb-0">
-                            <i class="bi-person custom-icon me-2"></i>
-                            <strong class="text-dark">Welcome to Music Festival 2023</strong>
-                        </p>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <input type="email" name="ticket-form-email" id="ticket-form-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+                        </div>
                     </div>
 
+                    <!-- "Choose What You Feel" Options -->
+                    <h6>Choose What You Feel</h6>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-check form-control">
+                                <input class="form-check-input" type="radio" name="TicketForm" id="flexRadioDefault1" onclick="changeColorGreen(this)">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    I Feel Positive
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-check form-check-radio form-control">
+                                <input class="form-check-input" type="radio" name="TicketForm" id="flexRadioDefault2" onclick="changeColorRed(this)">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    I Feel Negative
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="col-lg-4 col-md-10 col-8 mx-auto">
+                        <button type="submit" class="form-control">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <!-- Trigger Button to Open Modal -->
+        <button onclick="openModal()" style="display: none;">Open Modal</button>
+
+
+        <!-- Original Section Without Form Content -->
+        <section class="ticket-section section-padding">
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-10 mx-auto">
+                        <!-- This section remains empty or with any other content you might want -->
+                    </div>
                 </div>
             </div>
-        </header>
+        </section>
 
 
+
+    <main>
+        <!-- Navigation -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    Festava Live
-                </a>
-
-                <a href="ticket.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
+                <a class="navbar-brand font-antonio" href="index.html">
+                    <img src="images/forumlogo.png" alt="Forum Logo" class="me-lg-3">
+                    The Youth Forum
+                </a>   
+                <!-- Visible on small and medium screens (less than lg) -->
+                <a href="files/SJBYouthForum.pdf" download class="btn custom-btn mobile-button d-block d-lg-none">Summary Manifesto</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,101 +168,44 @@ https://templatemo.com/tm-583-festava-live
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_1">Home</a>
+                            <a class="nav-link click-scroll" href="#section_1">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_2">About</a>
+                            <a class="nav-link click-scroll" href="#section_2">About</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_3">Artists</a>
+                            <a class="nav-link click-scroll" href="#section_3">Speakers</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_4">Schedule</a>
+                            <a class="nav-link click-scroll" href="#section_4">Schedule</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_6">Contact</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_5">Pricing</a>
+                            <a class="nav-link" href="ticket.html">View Statistics</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_6">Contact</a>
+                            <a class="nav-link" href='https://www.sajith.lk/manifesto'>Manifesto</a>
                         </li>
                     </ul>
 
-                    <a href="ticket.html" class="btn custom-btn d-lg-block d-none">Buy Ticket</a>
+                    <!-- Visible on large screens (lg and up) -->
+                    <a href="files/SJBYouthForum.pdf" download class="btn custom-btn d-none d-lg-block">Download Summary Manifesto</a>
                 </div>
             </div>
         </nav>
 
+        <div>   
+            <canvas id="feedbackChart" width="400" height="200"></canvas>
+        </div>
 
-        <section class="ticket-section section-padding">
-            <div class="section-overlay"></div>
-
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-6 col-10 mx-auto">
-                        <form class="custom-form ticket-form mb-5 mb-lg-0" action="#" method="post" role="form">
-                            <h2 class="text-center mb-4">Tell us how you feel</h2>
-
-                            <div class="ticket-form-body">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <input type="text" name="ticket-form-name" id="ticket-form-name"
-                                            class="form-control" placeholder="Full name" required>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <input type="email" name="ticket-form-email" id="ticket-form-email"
-                                            pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address"
-                                            required>
-                                    </div>
-                                </div>
-                                <!--
-                                <input type="tel" class="form-control" name="ticket-form-phone"
-                                    placeholder="Ph 085-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="">
-                                -->
-                                <h6>Choose What You Feel</h6>
-
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="form-check form-control">
-                                            <input class="form-check-input" type="radio" name="TicketForm"
-                                                id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                I Feel Positive
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="form-check form-check-radio form-control">
-                                            <input class="form-check-input" type="radio" name="TicketForm"
-                                                id="flexRadioDefault2">
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                I Feel Negative
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <input type="number" name="ticket-form-number" id="ticket-form-number"
-                                    class="form-control" placeholder="Number of Tickets" required>
-
-                                <textarea name="ticket-form-message" rows="3" class="form-control"
-                                    id="ticket-form-message" placeholder="Additional Request"></textarea>
-
-                                <div class="col-lg-4 col-md-10 col-8 mx-auto">
-                                    <button type="submit" class="form-control">Buy Ticket</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-        </section>
     </main>
 
 
@@ -172,40 +215,34 @@ https://templatemo.com/tm-583-festava-live
                 <div class="row">
 
                     <div class="col-lg-6 col-12">
-                        <h2 class="text-white mb-lg-0">Festava Live</h2>
+                        <h2 class="text-white mb-lg-0 font-antonio">The Youth Forum</h2>
                     </div>
 
                     <div class="col-lg-6 col-12 d-flex justify-content-lg-end align-items-center">
                         <ul class="social-icon d-flex justify-content-lg-end">
                             <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
+                                <a href="https://www.facebook.com/sajithpremadasa/" class="social-icon-link">
+                                    <span class="bi-facebook"></span>
+                                </a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="https://x.com/sajithpremadasa" class="social-icon-link">
                                     <span class="bi-twitter"></span>
                                 </a>
                             </li>
 
                             <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-apple"></span>
-                                </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
+                                <a href="https://www.instagram.com/youthforsjb" class="social-icon-link">
                                     <span class="bi-instagram"></span>
                                 </a>
                             </li>
 
                             <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
+                                <a href="https://www.youtube.com/@SajithPremadasaLK" class="social-icon-link">
                                     <span class="bi-youtube"></span>
                                 </a>
                             </li>
 
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-pinterest"></span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -220,27 +257,23 @@ https://templatemo.com/tm-583-festava-live
 
                     <ul class="site-footer-links">
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Home</a>
+                            <a href="#section_1" class="site-footer-link">Home</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">About</a>
+                            <a href="#section_2" class="site-footer-link">About</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Artists</a>
+                            <a href="#section_3" class="site-footer-link">Speakers</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Schedule</a>
+                            <a href="#section_4" class="site-footer-link">Schedule</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Pricing</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Contact</a>
+                            <a href="#section_6" class="site-footer-link">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -249,14 +282,14 @@ https://templatemo.com/tm-583-festava-live
                     <h5 class="site-footer-title mb-3">Have a question?</h5>
 
                     <p class="text-white d-flex mb-1">
-                        <a href="tel: 090-080-0760" class="site-footer-link">
-                            090-080-0760
+                        <a href="tel:0722720618" class="site-footer-link">
+                            Mr. Milinda Randeniya - 0722720618
                         </a>
                     </p>
 
                     <p class="text-white d-flex">
-                        <a href="mailto:hello@company.com" class="site-footer-link">
-                            hello@company.com
+                        <a href="info.youthforumlk@gmail.com " class="site-footer-link">
+                            Info.youthforumlk@gmail.com
                         </a>
                     </p>
                 </div>
@@ -265,9 +298,9 @@ https://templatemo.com/tm-583-festava-live
                     <h5 class="site-footer-title mb-3">Location</h5>
 
                     <p class="text-white d-flex mt-3 mb-2">
-                        Silang Junction South, Tagaytay, Cavite, Philippines</p>
+                        592 Kotte Rd, Sri Jayawardenepura Kotte 10100</p>
 
-                    <a class="link-fx-1 color-contrast-higher mt-3" href="#">
+                    <a class="link-fx-1 color-contrast-higher mt-3" href="https://maps.app.goo.gl/Gq7uY2iTnS6Zu1br5">
                         <span>Our Maps</span>
                         <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
                             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -286,40 +319,211 @@ https://templatemo.com/tm-583-festava-live
                 <div class="row">
 
                     <div class="col-lg-3 col-12 mt-5">
-                        <p class="copyright-text">Copyright © 2036 Festava Live Company</p>
-                        <p class="copyright-text">Distributed by: <a href="https://themewagon.com">ThemeWagon</a></p>
-                    </div>
-
-                    <div class="col-lg-8 col-12 mt-lg-5">
-                        <ul class="site-footer-links">
-                            <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Terms &amp; Conditions</a>
-                            </li>
-
-                            <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Privacy Policy</a>
-                            </li>
-
-                            <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Your Feedback</a>
-                            </li>
-                        </ul>
+                        <p class="copyright-text">Copyright © 2024 webX</p>
+                        <p class="copyright-text">Distributed by: <a href="mailto:webxcooperation@gmail.com">webX</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!--
-
-T e m p l a t e M o
-
--->
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/curserControl.js"></script>
+    <script type="module" src="js/popupLoader.js"></script>
+
+
+    <script>
+        // Ensure this script is included to handle modal functionality
+document.getElementById('feedbackForm').addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent the default form submission
+    document.getElementById('myModal').style.display = 'none'; // Close the modal
+});
+
+// Close modal when clicking on close button
+document.querySelector('.modal .close').addEventListener('click', () => {
+    document.getElementById('myModal').style.display = 'none';
+});
+
+// Close modal when clicking outside the modal content
+window.onclick = function(event) {
+    if (event.target === document.getElementById('myModal')) {
+        document.getElementById('myModal').style.display = 'none';
+    }
+};
+
+// Function to open modal
+function openModal() {
+    document.getElementById('myModal').style.display = 'block';
+}
+
+    </script>
+
+    <script type="module">
+        function validateForm(event) {
+            event.preventDefault(); // Prevents the default form submission
+
+            const name = document.getElementById('ticket-form-name').value;
+            const email = document.getElementById('ticket-form-email').value;
+            const sentiment = document.querySelector('input[name="TicketForm"]:checked').nextSibling.textContent.trim();
+
+            console.log(`Form submitted: \n{name: '${name}', email: '${email}', sentiment: '${sentiment}'}`);
+
+            saveFeedback(name, email, sentiment);
+        }
+
+        function saveFeedback(name, email, sentiment) {
+            const feedbackRef = ref(db, 'feedback');
+            push(feedbackRef, {
+                name: name,
+                email: email,
+                sentiment: sentiment
+            }).then(() => {
+                console.log('Feedback saved successfully');
+                document.getElementById('myModal').style.display = 'none'; // Close the modal
+            }).catch((error) => {
+                console.error('Error saving feedback:', error);
+            });
+        }
+        // Attach the form submission event listener
+        document.getElementById('feedbackForm').addEventListener('submit', validateForm);
+    </script>
+
+
+    <script>
+        function changeColorGreen(radio) {
+            if (radio.checked) {
+                document.querySelectorAll('input[name="TicketForm"]').forEach(el => {
+                    el.parentElement.style.backgroundColor = 'green';
+                });
+            }
+        }
+
+        function changeColorRed(radio) {
+            if (radio.checked) {
+                document.querySelectorAll('input[name="TicketForm"]').forEach(el => {
+                    el.parentElement.style.backgroundColor = 'red';
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.about-section, .artists-section, .schedule-section, .contact-section');
+
+            function checkScroll() {
+                const triggerBottom = window.innerHeight / 5 * 4;
+
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+
+                    if (sectionTop < triggerBottom) {
+                        section.classList.add('show');
+                    } else {
+                        section.classList.remove('show');
+                    }
+                });
+            }
+
+            checkScroll();
+            window.addEventListener('scroll', checkScroll);
+        });
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('feedbackChart').getContext('2d');
+        
+        // Example data with more 'yes' votes than 'no'
+        const labels = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12'];
+        const yesVotes = [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]; // More 'yes' votes
+        const noVotes = [5, 10, 15, 10, 10, 15, 20, 15, 10, 20, 15, 10]; // Fewer 'no' votes
+    
+        const feedbackChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Yes Votes',
+                        data: yesVotes,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false,
+                        tension: 0.1,
+                    },
+                    {
+                        label: 'No Votes',
+                        data: noVotes,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        fill: false,
+                        tension: 0.1,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 2000,
+                    easing: 'easeInOutQuad',
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Votes'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Days'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        // Scroll Animation
+        window.addEventListener('scroll', function () {
+        const aboutSection = document.querySelector('.about-section');
+        const artistsSection = document.querySelector('.artists-section');
+        const scheduleSection = document.querySelector('.schedule-section');
+        const contactSection = document.querySelector('.contact-section');
+        const aboutSectionPosition = aboutSection.getBoundingClientRect().top;
+        const artistsSectionPosition = artistsSection.getBoundingClientRect().top;
+        const scheduleSectionPosition = scheduleSection.getBoundingClientRect().top;
+        const contactSectionPosition = contactSection.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (aboutSectionPosition < windowHeight - 100) {
+        aboutSection.classList.add('show');
+        }
+
+        if (artistsSectionPosition < windowHeight - 100) {
+        artistsSection.classList.add('show');
+        }
+
+        if (scheduleSectionPosition < windowHeight - 100) {
+        scheduleSection.classList.add('show');
+        }
+
+        if (contactSectionPosition < windowHeight - 100) {
+        contactSection.classList.add('show');
+        }
+        });
+    </script>
+
+
+
 
 </body>
 
