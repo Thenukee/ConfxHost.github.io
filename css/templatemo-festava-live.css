@@ -954,6 +954,34 @@ strong {
   }
 }
 
+/*---------------------------------------
+co-chair
+-----------------------------------------*/
+/* Frame around the image and text */
+.cochair-thumb.frame {
+  border: 3px solid #ddd; /* Add a border around the image and name */
+  padding: 15px; /* Add some padding to space out the image and name */
+  border-radius: 15px; /* Add rounded corners */
+  margin-bottom: 30px;
+}
+
+/* Frame specific to the name */
+.frame-name {
+  border-top: 2px solid #ddd; /* Border above the name */
+  padding-top: 10px; /* Space between image and name */
+  margin-top: 20px;
+  font-weight: bold; /* Bold the names */
+  color: #333; /* Adjust color if needed */
+}
+
+/* Image-specific styles */
+.cochair-image {
+  border-radius: 10px; /* Optional: Round the corners of the image */
+  width: 100%; /* Ensure the image is responsive */
+  object-fit: cover;
+}
+
+
 
 /*---------------------------------------
   RESPONSIVE STYLES               
