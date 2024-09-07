@@ -404,19 +404,39 @@
     <script>
         function changeColorGreen(radio) {
             if (radio.checked) {
+                // Reset the background color and text color for all buttons first
                 document.querySelectorAll('input[name="TicketForm"]').forEach(el => {
-                    el.parentElement.style.backgroundColor = 'green';
+                    const parent = el.parentElement;
+                    parent.style.backgroundColor = ''; // Reset background color
+                    parent.style.color = ''; // Reset text color
                 });
+
+                // Apply background color and text color to the selected button's parent element
+                const parent = radio.parentElement;
+                parent.style.backgroundColor = 'green';
+                parent.style.color = 'black'; // Set text color to black
             }
         }
 
+
+
         function changeColorRed(radio) {
             if (radio.checked) {
+                // Reset the background color and text color for all buttons first
                 document.querySelectorAll('input[name="TicketForm"]').forEach(el => {
-                    el.parentElement.style.backgroundColor = 'red';
+                    const parent = el.parentElement;
+                    parent.style.backgroundColor = ''; // Reset background color
+                    parent.style.color = ''; // Reset text color
                 });
+
+                // Apply background color and text color to the selected button's parent element
+                const parent = radio.parentElement;
+                parent.style.backgroundColor = 'red';
+                parent.style.color = 'black'; // Set text color to black
             }
         }
+
+
 
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.about-section, .artists-section, .schedule-section, .contact-section');
