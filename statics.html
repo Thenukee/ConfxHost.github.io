@@ -57,8 +57,9 @@
         body {
             cursor: url('images/curser.png'), auto;
             min-height: 100vh;
-            overflow: auto; /* Ensure body allows scrolling */
+            overflow: auto; /* Allow scrolling by default */
         }
+
         /* Scroll Animation */
         .about-section,
         .artists-section,
@@ -339,29 +340,28 @@
 
 
     <script>
-        // Ensure this script is included to handle modal functionality
-document.getElementById('feedbackForm').addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent the default form submission
-    document.getElementById('myModal').style.display = 'none'; // Close the modal
-});
+        document.getElementById('feedbackForm').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            document.getElementById('myModal').style.display = 'none'; // Close the modal
+            document.body.style.overflow = 'auto'; // Ensure scrolling is enabled
+        });
 
-// Close modal when clicking on close button
-document.querySelector('.modal .close').addEventListener('click', () => {
-    document.getElementById('myModal').style.display = 'none';
-});
+        document.querySelector('.modal .close').addEventListener('click', () => {
+            document.getElementById('myModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Ensure scrolling is enabled
+        });
 
-// Close modal when clicking outside the modal content
-window.onclick = function(event) {
-    if (event.target === document.getElementById('myModal')) {
-        document.getElementById('myModal').style.display = 'none';
-    }
-};
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+                document.body.style.overflow = 'auto'; // Ensure scrolling is enabled
+            }
+        };
 
-// Function to open modal
-function openModal() {
-    document.getElementById('myModal').style.display = 'block';
-}
-
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Disable scrolling when modal is open
+        }
     </script>
 
     <script type="module">
@@ -390,8 +390,14 @@ function openModal() {
                 console.error('Error saving feedback:', error);
             });
         }
-        // Attach the form submission event listener
-        document.getElementById('feedbackForm').addEventListener('submit', validateForm);
+        document.getElementById('feedbackForm').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            document.getElementById('myModal').style.display = 'none'; // Close the modal
+            
+            // Ensure scroll is enabled on the main page
+            document.body.style.overflow = 'auto'; // Reset overflow
+        });
+
     </script>
 
 
